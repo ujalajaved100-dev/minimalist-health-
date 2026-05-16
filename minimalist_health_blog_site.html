@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minimalist Health</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f9faf8;
+      color: #1d1d1d;
+      line-height: 1.7;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(249,250,248,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e8ebe7;
+      z-index: 1000;
+    }
+
+    nav {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #2f6f57;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #5ca889, #2f6f57);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 1.2rem;
+      box-shadow: 0 6px 20px rgba(47,111,87,0.2);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      font-weight: 500;
+      color: #555;
+    }
+
+    .hero {
+      width: 90%;
+      max-width: 1200px;
+      margin: 90px auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      align-items: center;
+      gap: 60px;
+    }
+
+    .hero-text h1 {
+      font-size: 4rem;
+      line-height: 1.1;
+      margin-bottom: 25px;
+      color: #1f1f1f;
+    }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      color: #5c5c5c;
+      margin-bottom: 35px;
+    }
+
+    .hero-btn {
+      display: inline-block;
+      padding: 14px 28px;
+      background: #2f6f57;
+      color: white;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: 0.3s ease;
+    }
+
+    .hero-btn:hover {
+      transform: translateY(-3px);
+      background: #245541;
+    }
+
+    .hero-image {
+      background: linear-gradient(135deg, #d7eadf, #edf5ef);
+      border-radius: 30px;
+      padding: 40px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+    }
+
+    .hero-image img {
+      width: 100%;
+      border-radius: 20px;
+    }
+
+    section {
+      padding: 90px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+      color: #222;
+    }
+
+    .section-title p {
+      color: #666;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .blog-card {
+      background: white;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 12px 25px rgba(0,0,0,0.05);
+      transition: 0.3s ease;
+      border: 1px solid #eef0ec;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .blog-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .blog-content {
+      padding: 24px;
+    }
+
+    .blog-content span {
+      font-size: 0.85rem;
+      color: #2f6f57;
+      font-weight: 600;
+    }
+
+    .blog-content h3 {
+      margin: 14px 0;
+      font-size: 1.3rem;
+      color: #222;
+    }
+
+    .blog-content p {
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .read-more {
+      color: #2f6f57;
+      font-weight: 600;
+    }
+
+    .about-wrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-wrapper img {
+      width: 100%;
+      border-radius: 25px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+    }
+
+    .about-text h3 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      color: #666;
+      margin-bottom: 18px;
+    }
+
+    .tips-section {
+      background: #eff5f1;
+    }
+
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .tip-box {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.04);
+    }
+
+    .tip-box h4 {
+      margin: 16px 0;
+      color: #2f6f57;
+    }
+
+    .newsletter {
+      background: linear-gradient(135deg, #2f6f57, #4b9473);
+      color: white;
+      border-radius: 30px;
+      padding: 60px;
+      text-align: center;
+    }
+
+    .newsletter h2 {
+      font-size: 2.4rem;
+      margin-bottom: 16px;
+    }
+
+    .newsletter p {
+      max-width: 650px;
+      margin: auto auto 30px;
+      color: rgba(255,255,255,0.85);
+    }
+
+    .newsletter form {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .newsletter input {
+      padding: 16px;
+      width: 320px;
+      border: none;
+      border-radius: 999px;
+      font-size: 1rem;
+    }
+
+    .newsletter button {
+      padding: 16px 30px;
+      border: none;
+      border-radius: 999px;
+      background: white;
+      color: #2f6f57;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    footer {
+      padding: 50px 0;
+      text-align: center;
+      color: #666;
+      border-top: 1px solid #e6ebe6;
+      margin-top: 80px;
+    }
+
+    @media (max-width: 768px) {
+      .hero-text h1 {
+        font-size: 2.8rem;
+      }
+
+      .nav-links {
+        gap: 16px;
+        font-size: 0.9rem;
+      }
+
+      .newsletter {
+        padding: 40px 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">
+        <div class="logo-icon">🌿</div>
+        Minimalist Health
+      </div>
+
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#blogs">Blogs</a>
+        <a href="#about">About</a>
+        <a href="#tips">Tips</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HOME PAGE -->
+    <section class="hero" id="home">
+      <div class="hero-text">
+        <h1>Healthy living through simplicity.</h1>
+        <p>
+          Minimalist Health is a calm digital space focused on wellness, mindful habits,
+          nutrition, mental clarity, and balanced living. Explore practical health advice
+          designed for real people and real routines.
+        </p>
+
+        <a href="#blogs" class="hero-btn">Read Articles</a>
+      </div>
+
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=1200&auto=format&fit=crop" alt="Healthy Lifestyle">
+      </div>
+    </section>
+
+    <!-- BLOG PAGE -->
+    <section id="blogs">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Latest Wellness Blogs</h2>
+          <p>
+            Carefully written articles to help you improve your body, mind, and lifestyle
+            without overwhelming routines.
+          </p>
+        </div>
+
+        <div class="blog-grid">
+
+          <div class="blog-card">
+            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=1200&auto=format&fit=crop" alt="Healthy Food">
+            <div class="blog-content">
+              <span>Nutrition</span>
+              <h3>5 Minimal Eating Habits That Improve Energy</h3>
+              <p>
+                Small dietary changes often create the biggest impact. Learn how hydration,
+                balanced meals, and mindful eating can improve your daily focus.
+              </p>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </div>
+
+          <div class="blog-card">
+            <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1200&auto=format&fit=crop" alt="Meditation">
+            <div class="blog-content">
+              <span>Mental Health</span>
+              <h3>The 10-Minute Morning Routine for Calmness</h3>
+              <p>
+                Discover how a short intentional routine can reduce anxiety, improve clarity,
+                and help you start the day with more confidence and focus.
+              </p>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </div>
+
+          <div class="blog-card">
+            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1200&auto=format&fit=crop" alt="Fitness">
+            <div class="blog-content">
+              <span>Fitness</span>
+              <h3>Simple Daily Movement for a Stronger Body</h3>
+              <p>
+                You don't need complicated workouts. Walking, stretching, and bodyweight
+                exercises can transform your long-term health.
+              </p>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </div>
+
+          <div class="blog-card">
+            <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=1200&auto=format&fit=crop" alt="Lifestyle">
+            <div class="blog-content">
+              <span>Lifestyle</span>
+              <h3>Digital Detox: Reclaiming Peace in a Busy World</h3>
+              <p>
+                Constant notifications affect sleep, stress, and productivity. Learn practical
+                strategies to reconnect with yourself offline.
+              </p>
+              <a href="#" class="read-more">Read More →</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT PAGE -->
+    <section id="about">
+      <div class="container">
+
+        <div class="about-wrapper">
+
+          <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=1200&auto=format&fit=crop" alt="About Health">
+
+          <div class="about-text">
+            <h3>About Minimalist Health</h3>
+
+            <p>
+              Minimalist Health was created to simplify wellness. Many people feel overwhelmed
+              by complicated diets, intense fitness trends, and unrealistic expectations.
+            </p>
+
+            <p>
+              This blog focuses on sustainable habits, peaceful living, and achievable routines.
+              Our mission is to help readers feel healthier without adding stress to their lives.
+            </p>
+
+            <p>
+              Through evidence-based wellness content and thoughtful lifestyle tips, we encourage
+              a healthier relationship with food, fitness, productivity, and mental wellbeing.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TIPS PAGE -->
+    <section class="tips-section" id="tips">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Daily Wellness Tips</h2>
+          <p>
+            Tiny actions repeated consistently often create the strongest results.
+          </p>
+        </div>
+
+        <div class="tips-grid">
+
+          <div class="tip-box">
+            <h4>💧 Hydrate Early</h4>
+            <p>Start your morning with water before coffee to wake up your body naturally.</p>
+          </div>
+
+          <div class="tip-box">
+            <h4>🌿 Breathe Mindfully</h4>
+            <p>Take five slow breaths during stressful moments to calm your nervous system.</p>
+          </div>
+
+          <div class="tip-box">
+            <h4>🚶 Move Daily</h4>
+            <p>Even a 20-minute walk can improve mood, energy, and cardiovascular health.</p>
+          </div>
+
+          <div class="tip-box">
+            <h4>😴 Prioritize Sleep</h4>
+            <p>Consistent sleep schedules support better immunity and mental performance.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT PAGE -->
+    <section id="contact">
+      <div class="container">
+
+        <div class="newsletter">
+          <h2>Join the Minimalist Health Community</h2>
+          <p>
+            Subscribe to receive calming wellness insights, healthy living tips, and new blog
+            articles directly in your inbox every week.
+          </p>
+
+          <form>
+            <input type="email" placeholder="Enter your email address" required>
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Minimalist Health — Designed with simplicity, clarity, and wellness in mind.</p>
+  </footer>
+
+</body>
+</html>
